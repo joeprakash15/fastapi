@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-example
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fastapi_app
+  template:
+    metadata:
+      labels:
+        app: fastapi_app
+    spec:
+      containers:
+      - name: my-con1
+        image: joeprakashsoosai/con   # docker image that was pushed into my Docker registry.
+        ports:
+        - name: http
+          containerPort: 8000
